@@ -1,3 +1,4 @@
 # META4ICS - Metric Analyser for Industrial Control Systems
 
-Note: META4ICS will be uploaded to GitHub in a couple of days. 
+We are currently cleaning up the code of META4ICS. We will upload the tool as soon as possible. 
+
