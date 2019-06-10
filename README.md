@@ -2,6 +2,7 @@
 ### Version 0.53.1
 
 ## Usage
+```
 $> java -jar meta4ics.jar examples/simple/example1.json
 == META4ICS v0.53.1 ==
 == Started at 2019-06-10 19:52:03.741 ==
@@ -26,14 +27,14 @@ Total critical nodes: 2
 ==================================
 Solution saved in: ./view/sol.json
 == META4ICS ended at 2019-06-10 19:52:04.058 ==
-
+```
 
 ## View the solution
+```
 $> ./web-viewer.py
 Running in Python 2...
 ('Started HTTP server on port ', 8000)
-
-Go to the browser and insert the viewer URL:
-http://localhost:8000/viz.html
+```
+Go to the browser and insert the viewer URL: [http://localhost:8000/viz.html](http://localhost:8000/viz.html)
 
 You should see the graph and the critical nodes.
