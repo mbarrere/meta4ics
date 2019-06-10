@@ -38,4 +38,4 @@ Running in Python 2...
 Go to the browser and insert the viewer's URL: [http://localhost:8000/viz.html](http://localhost:8000/viz.html)
 
 You should see the graph and the critical nodes:
-![Screenshot - simple example](https://github.com/mbarrere/meta4ics/blob/master/screenshots/example1.png)
+![Screenshot - simple example](https://github.com/mbarrere/meta4ics/blob/master/screenshots/example1.png | width=75)
