@@ -1,5 +1,10 @@
 .DS_Store
 .DS_Store?
+.classpath
+.optim-input.tmp
+.project
+.settings/
+pom.xml
 bin/
 dist/
 output/
