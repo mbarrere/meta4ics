@@ -35,6 +35,6 @@ $> ./web-viewer.py
 Running in Python 2...
 ('Started HTTP server on port ', 8000)
 ```
-Go to the browser and insert the viewer URL: [http://localhost:8000/viz.html](http://localhost:8000/viz.html)
+Go to the browser and insert the viewer's URL: [http://localhost:8000/viz.html](http://localhost:8000/viz.html)
 
 You should see the graph and the critical nodes.
