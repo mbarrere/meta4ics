@@ -1,7 +1,5 @@
 # META4ICS - Metric Analyser for Industrial Control Systems
-## Version 0.53.1
-
-[//]: # We are currently cleaning up the code of META4ICS. We will upload the tool as soon as possible.
+### Version 0.53.1
 
 ## Usage
 $> java -jar meta4ics.jar examples/simple/example1.json
@@ -30,7 +28,7 @@ Solution saved in: ./view/sol.json
 == META4ICS ended at 2019-06-10 19:52:04.058 ==
 
 
-## View the Solution
+## View the solution
 $> ./web-viewer.py
 Running in Python 2...
 ('Started HTTP server on port ', 8000)

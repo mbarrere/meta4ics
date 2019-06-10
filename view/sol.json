@@ -1,0 +1,146 @@
+{
+  "graph" : {
+    "source" : "s",
+    "target" : "c1",
+    "nodes" : [ {
+      "id" : "c1",
+      "type" : "actuator",
+      "value" : "inf",
+      "label" : "inf",
+      "measures" : null,
+      "icon" : null
+    }, {
+      "id" : "d",
+      "type" : "agent",
+      "value" : "10",
+      "label" : "10",
+      "measures" : null,
+      "icon" : null
+    }, {
+      "id" : "or-d",
+      "type" : "or",
+      "value" : "none",
+      "label" : "or-d",
+      "measures" : null,
+      "icon" : null
+    }, {
+      "id" : "c",
+      "type" : "agent",
+      "value" : "2",
+      "label" : "2",
+      "measures" : null,
+      "icon" : null
+    }, {
+      "id" : "b",
+      "type" : "agent",
+      "value" : "5",
+      "label" : "5",
+      "measures" : null,
+      "icon" : null
+    }, {
+      "id" : "a",
+      "type" : "agent",
+      "value" : "2",
+      "label" : "2",
+      "measures" : null,
+      "icon" : null
+    }, {
+      "id" : "a-b",
+      "type" : "and",
+      "value" : "none",
+      "label" : "a-b",
+      "measures" : null,
+      "icon" : null
+    }, {
+      "id" : "b-c",
+      "type" : "and",
+      "value" : "none",
+      "label" : "b-c",
+      "measures" : null,
+      "icon" : null
+    }, {
+      "id" : "s",
+      "type" : "init",
+      "value" : "inf",
+      "label" : "inf",
+      "measures" : null,
+      "icon" : null
+    } ],
+    "edges" : [ {
+      "source" : "d",
+      "target" : "c1",
+      "value" : "inf",
+      "label" : "agent-actuator"
+    }, {
+      "source" : "or-d",
+      "target" : "d",
+      "value" : "1",
+      "label" : "or-agent"
+    }, {
+      "source" : "a-b",
+      "target" : "or-d",
+      "value" : "1",
+      "label" : "and-or"
+    }, {
+      "source" : "b-c",
+      "target" : "or-d",
+      "value" : "1",
+      "label" : "and-or"
+    }, {
+      "source" : "a",
+      "target" : "a-b",
+      "value" : "1",
+      "label" : "agent-and"
+    }, {
+      "source" : "b",
+      "target" : "a-b",
+      "value" : "1",
+      "label" : "agent-and"
+    }, {
+      "source" : "b",
+      "target" : "b-c",
+      "value" : "1",
+      "label" : "agent-and"
+    }, {
+      "source" : "c",
+      "target" : "b-c",
+      "value" : "1",
+      "label" : "agent-and"
+    }, {
+      "source" : "s",
+      "target" : "a",
+      "value" : "inf",
+      "label" : "init-sensor"
+    }, {
+      "source" : "s",
+      "target" : "b",
+      "value" : "inf",
+      "label" : "init-sensor"
+    }, {
+      "source" : "s",
+      "target" : "c",
+      "value" : "inf",
+      "label" : "init-sensor"
+    } ]
+  },
+  "cut" : {
+    "nodes" : [ {
+      "id" : "a",
+      "type" : "agent",
+      "value" : "2",
+      "label" : "2",
+      "measures" : null,
+      "icon" : null
+    }, {
+      "id" : "c",
+      "type" : "agent",
+      "value" : "2",
+      "label" : "2",
+      "measures" : null,
+      "icon" : null
+    } ],
+    "measureByInstanceIdMap" : { },
+    "cost" : 4.0,
+    "solverId" : "MAX-SAT-SOLVER"
+  }
+}

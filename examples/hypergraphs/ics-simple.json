@@ -1,0 +1,46 @@
+{ "graph": {
+ 	"target":"c1",
+ 	"nodes": [
+ 	{ "id": "c1", "type": "actuator", "value": "inf",
+ 		"measures": [
+ 			{"id": "F1-1", "type": "F1"}, {"id": "B2-1", "type": "B2"}
+ 		]
+ 	},
+ 	{ "id": "s5", "type": "sensor", "value": "0",
+ 		"measures": [
+ 			{"id": "F1-2", "type": "F1"}, {"id": "B1-1", "type": "B1"}, {"id": "A3-1", "type": "A3"}, {"id": "P2-2", "type": "P2"}
+ 		]
+ 	},
+ 	{ "id": "s3", "type": "sensor", "value": "0",
+ 		"measures": [
+ 			{"id": "F2-1", "type": "F2"},  {"id": "P1-2", "type": "P1"}, {"id": "A2-2", "type": "A2"}
+ 		]
+ 	},
+ 	{ "id": "a1", "type": "agent", "value": "0",
+ 		"measures": [
+ 			{"id": "F1-2", "type": "F1"}, {"id": "B1-1", "type": "B1"}, {"id": "A3-1", "type": "A3"}
+ 		]
+ 	},
+  	{ "id": "a2", "type": "agent", "value": "0",
+ 		"measures": [
+ 			{"id": "F1-1", "type": "F1"}, {"id": "B2-1", "type": "B2"}, {"id": "A2-1", "type": "A2"}, {"id": "P1-1", "type": "P1"}
+ 		]
+ 	},
+ 	{ "id": "s3-a1", "type": "and", "value": "none" }
+ 	],
+ 	"edges": [
+ 		{ "source": "s5", "target": "a1"}, 
+ 		{ "source": "a1", "target": "s3-a1" }, 
+		{ "source": "s3", "target": "s3-a1" },
+  		{ "source": "s3-a1", "target": "a2" },
+ 		{ "source": "a2", "target": "c1" }
+ 	],
+ 	"measures": [
+ 		{ "id": "F1", "cost": "1", "desc": "Wire Fenced area" }, { "id": "F2", "cost": "2", "desc": "Underground Facility" },
+ 		{ "id": "B1", "cost": "2", "desc": "Locked Building" }, { "id": "B2", "cost": "8", "desc": "Secure Locked Building" },
+ 		{ "id": "A1", "cost": "12", "desc": "Door Alarm"},  { "id": "A2", "cost": "18", "desc": "Alarm on Telemetry" },
+ 		{ "id": "A3", "cost": "3", "desc": "Patrol Unit"}, { "id": "P1", "cost": "2", "desc": "Locked Box" },
+ 		{ "id": "P2", "cost": "8", "desc": "Cable Protection"}
+ 	]
+ 	}
+ }

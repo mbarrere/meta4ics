@@ -1,0 +1,135 @@
+{
+    "graph": {
+
+        "source":"s",
+
+	"target":"c1", 
+
+        "nodes": [
+            {
+                "id": "c1",
+                "type": "actuator",
+                "label": "c1", 
+                "value": "inf"
+            },
+            {
+                "id": "d",
+                "type": "agent",
+                "label": "d", 
+                "value": "10"
+            }, 
+	    {
+                "id": "or-d",
+                "type": "or",
+                "label": "or-d", 
+                "value": "none"
+            }, 
+	    {
+                "id": "c",
+                "type": "agent",
+                "label": "c", 
+                "value": "2"
+            },
+            {
+                "id": "b",
+                "type": "agent",
+                "label": "b", 
+                "value": "3.2"
+            },
+	    {
+                "id": "a",
+                "type": "agent",
+                "label": "a", 
+                "value": "2"
+            },
+	    {
+                "id": "a-b",
+                "type": "and",
+                "label": "a-b", 
+                "value": "none"
+            },
+	    {
+                "id": "b-c",
+                "type": "and",
+                "label": "b-c", 
+                "value": "none"
+            },              
+	    {
+                "id": "s",
+                "type": "init",
+                "label": "s", 
+                "value": "inf"
+            }
+        ],
+
+        "edges": [
+            {
+                "source": "d",            
+                "target": "c1",
+                "label": "agent-actuator",
+		"value":"inf"
+            }, 
+	    {
+                "source": "or-d",
+                "target": "d",
+                "label": "or-agent",
+		"value":"1"
+            },
+	    {
+                "source": "a-b",            
+                "target": "or-d",
+                "label": "and-or",
+		"value":"1"
+            }, 
+	    {
+                "source": "b-c",
+                "target": "or-d",
+                "label": "and-or",
+		"value":"1"
+            }, 
+	    {
+                "source": "a",
+                "target": "a-b",
+                "label": "agent-and",
+		"value":"1"
+            },
+	    {
+                "source": "b",
+                "target": "a-b",
+                "label": "agent-and",
+		"value":"1"
+            },
+	    {
+                "source": "b",
+                "target": "b-c",
+                "label": "agent-and",
+		"value":"1"
+            },
+	    {
+                "source": "c",
+                "target": "b-c",
+                "label": "agent-and",
+		"value":"1"
+            },
+
+	    {
+                "source": "s",
+                "target": "a",
+                "label": "init-sensor",
+		"value":"inf"
+            },
+	    {
+                "source": "s",
+                "target": "b",
+                "label": "init-sensor",
+		"value":"inf"
+            },
+	    {
+                "source": "s",
+                "target": "c",
+                "label": "init-sensor",
+		"value":"inf"
+            }
+        ]
+    }
+}

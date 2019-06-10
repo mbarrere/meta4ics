@@ -1,0 +1,341 @@
+{
+    "graph": {
+        "nodes": [
+            {
+                "id": "c1",
+                "type": "actuator",
+                "label": "c1", 
+                "value": "inf"
+            },
+            {
+                "id": "a2",
+                "type": "agent",
+                "label": "a2", 
+                "value": "inf"
+            }, 
+	    {
+                "id": "or-a2",
+                "type": "or",
+                "label": "or-a2", 
+                "value": "none"
+            }, 
+            {
+                "id": "s3",
+                "type": "sensor",
+                "label": "s3", 
+                "value": "5"
+            },
+            {
+                "id": "a1",
+                "type": "agent",
+                "label": "a1", 
+                "value": "6"
+            },
+	    {
+                "id": "a1-s3",
+                "type": "and",
+                "label": "a1-s3", 
+                "value": "none"
+            },
+	    {
+                "id": "or-a1",
+                "type": "or",
+                "label": "or-a1", 
+                "value": "none"
+            }, 
+            {
+                "id": "s5",
+                "type": "sensor",
+                "label": "s5", 
+                "value": "6"
+            }, 
+	    {
+                "id": "a3",
+                "type": "agent",
+                "label": "a3", 
+                "value": "6"
+            }, 
+	    {
+                "id": "a9",
+                "type": "agent",
+                "label": "a9", 
+                "value": "6"
+            },
+	    {
+                "id": "s6",
+                "type": "sensor",
+                "label": "s6", 
+                "value": "2"
+            },            
+	    {
+                "id": "s4",
+                "type": "sensor",
+                "label": "s4", 
+                "value": "3"
+            },
+	    {
+                "id": "s4-s6",
+                "type": "and",
+                "label": "s4-s6", 
+                "value": "none"
+            }, 
+	    {
+                "id": "s6-s3",
+                "type": "and",
+                "label": "s6-s3", 
+                "value": "none"
+            },
+            {
+                "id": "a10",
+                "type": "agent",
+                "label": "a10", 
+                "value": "9"
+            },
+            {
+                "id": "a7",
+                "type": "agent",
+                "label": "a7", 
+                "value": "9"
+            },
+	    {
+                "id": "a7-a10",
+                "type": "and",
+                "label": "a7-a10", 
+                "value": "none"
+            },
+	    {
+                "id": "or-a10",
+                "type": "or",
+                "label": "or-a10", 
+                "value": "none"
+            },  
+            {
+                "id": "a8",
+                "type": "agent",
+                "label": "a8", 
+                "value": "9"
+            },
+	    {
+                "id": "s2",
+                "type": "sensor",
+                "label": "s2", 
+                "value": "9"
+            },
+	    {
+                "id": "s1",
+                "type": "sensor",
+                "label": "s1", 
+                "value": "6"
+            },
+	    {
+                "id": "s1-s2",
+                "type": "and",
+                "label": "s1-s2", 
+                "value": "none"
+            }, 
+	    {
+                "id": "s",
+                "type": "init",
+                "label": "s", 
+                "value": "inf"
+            }
+        ],
+        "edges": [
+            {
+                "source": "a2",            
+                "target": "c1",
+                "label": "agent-actuator",
+		"value":"inf"
+            }, 
+	    {
+                "source": "or-a2",
+                "target": "a2",
+                "label": "or-agent",
+		"value":"10"
+            },
+	    {
+                "source": "s3",            
+                "target": "a1-s3",
+                "label": "sensor-and",
+		"value":"1"
+            }, 
+	    {
+                "source": "a1",
+                "target": "a1-s3",
+                "label": "agent-and",
+		"value":"1"
+            },
+	    {
+                "source": "a1-s3",
+                "target": "or-a2",
+                "label": "and-2-or-agent",
+		"value":"3"
+            }, 
+	    {
+                "source": "or-a1",
+                "target": "a1",
+                "label": "or-agent",
+		"value":"1"
+            }, 
+	    {
+                "source": "s5",
+                "target": "or-a1",
+                "label": "sensor-2-or-agent",
+		"value":"1"
+            },
+	    {
+                "source": "a3",
+                "target": "or-a1",
+                "label": "agent-2-or-agent",
+		"value":"1"
+            },
+            {
+                "source": "a9",
+                "target": "or-a1",
+                "label": "agent-2-or-agent",
+		"value":"1"
+            },
+	    {
+                "source": "s6",            
+                "target": "s4-s6",
+                "label": "sensor-and",
+		"value":"1"
+            },
+	    {
+                "source": "s4",
+                "target": "s4-s6",
+                "label": "sensor-and",
+		"value":"1"
+            },
+	    {
+                "source": "s4-s6",
+                "target": "a3",
+                "label": "and-agent",
+		"value":"1"
+            },
+	    
+	    {
+                "source": "s6-s3",
+                "target": "a9",
+                "label": "and-agent",
+		"value":"1"
+            },
+	    {
+                "source": "s6",
+                "target": "s6-s3",
+                "label": "sensor-and",
+		"value":"1"
+            },
+	    {
+                "source": "s3",
+                "target": "s6-s3",
+                "label": "sensor-and",
+		"value":"1"
+            },
+	    
+	    {
+                "source": "a10",
+                "target": "a7-a10",
+                "label": "agent-and",
+		"value":"1"
+            },
+	    {
+                "source": "a7",
+                "target": "a7-a10",
+                "label": "agent-and",
+		"value":"1"
+            },
+	    {
+                "source": "a7-a10",
+                "target": "or-a2",
+                "label": "and-2-or-agent",
+		"value":"1"
+            },
+	    {
+                "source": "a7",
+                "target": "or-a10",
+                "label": "agent-2-or-agent",
+		"value":"1"
+            },
+	    {
+                "source": "a8",
+                "target": "or-a10",
+                "label": "agent-2-or-agent",
+		"value":"1"
+            },
+	    {
+                "source": "or-a10",
+                "target": "a10",
+                "label": "or-agent",
+		"value":"1"
+            },
+	    {
+                "source": "s2",
+                "target": "s1-s2",
+                "label": "sensor-and",
+		"value":"1"
+            },
+	    {
+                "source": "s1",
+                "target": "s1-s2",
+                "label": "sensor-and",
+		"value":"1"
+            },
+	    {
+                "source": "s1-s2",
+                "target": "a7",
+                "label": "and-agent",
+		"value":"1"
+            },
+
+
+
+	    {
+                "source": "s",
+                "target": "s4",
+                "label": "init-sensor",
+		"value":"inf"
+            },
+	    {
+                "source": "s",
+                "target": "s6",
+                "label": "init-sensor",
+		"value":"inf"
+            },
+	    {
+                "source": "s",
+                "target": "s5",
+                "label": "init-sensor",
+		"value":"inf"
+            },
+	    {
+                "source": "s",
+                "target": "s3",
+                "label": "init-sensor",
+		"value":"inf"
+            },
+	    {
+                "source": "s",
+                "target": "s2",
+                "label": "init-sensor",
+		"value":"inf"
+            },
+	    {
+                "source": "s",
+                "target": "s1",
+                "label": "init-sensor",
+		"value":"inf"
+            }, 
+
+	    {
+                "source": "s",
+                "target": "a8",
+                "label": "init-agent",
+		"value":"inf"
+            }
+
+        ], 
+        "source":"s",
+	"target":"c1"
+    }
+}

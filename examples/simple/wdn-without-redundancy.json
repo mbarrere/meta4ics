@@ -1,0 +1,94 @@
+{
+    "graph": {
+        "nodes": [
+            {
+                "id": "c1",
+                "type": "actuator",
+                "label": "c1", 
+                "value": "inf"
+            },
+            {
+                "id": "a2",
+                "type": "agent",
+                "label": "a2", 
+                "value": "inf"
+            }, 	    
+            {
+                "id": "s3",
+                "type": "sensor",
+                "label": "s3", 
+                "value": "5"
+            },
+            {
+                "id": "a1",
+                "type": "agent",
+                "label": "a1", 
+                "value": "6"
+            },
+	    {
+                "id": "a1-s3",
+                "type": "and",
+                "label": "a1-s3", 
+                "value": "none"
+            },
+            {
+                "id": "s5",
+                "type": "sensor",
+                "label": "s5", 
+                "value": "6"
+            },             	    
+	    {
+                "id": "s",
+                "type": "init",
+                "label": "s", 
+                "value": "inf"
+            }
+        ],
+        "edges": [
+            {
+                "source": "a2",            
+                "target": "c1",
+                "label": "agent-actuator",
+		"value":"inf"
+            }, 
+	    {
+                "source": "a1-s3",
+                "target": "a2",
+                "label": "and-agent",
+		"value":"inf"
+            },
+	    {
+                "source": "s3",            
+                "target": "a1-s3",
+                "label": "sensor-and",
+		"value":"1"
+            }, 
+	    {
+                "source": "a1",
+                "target": "a1-s3",
+                "label": "agent-and",
+		"value":"1"
+            },
+	    {
+                "source": "s5",
+                "target": "a1",
+                "label": "sensor-2-agent",
+		"value":"1"
+            },	 	        
+	    {
+                "source": "s",
+                "target": "s5",
+                "label": "init-sensor",
+		"value":"inf"
+            },
+	    {
+                "source": "s",
+                "target": "s3",
+                "label": "init-sensor",
+		"value":"inf"
+            }
+        ], 
+        "source":"s",
+	"target":"c1"
+    }
+}
