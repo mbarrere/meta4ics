@@ -61,6 +61,7 @@ You should see the graph and the critical nodes:
 
 ![Screenshot - simple example](https://github.com/mbarrere/meta4ics/blob/master/screenshots/example1.png)
 
+---
 
 ### EXAMPLE 2: AND/OR hypergraph (multiple overlapping security measures)
 ```
