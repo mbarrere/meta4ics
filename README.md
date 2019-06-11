@@ -19,7 +19,8 @@ This command launches the webviewer (Python-based HTTP server) that displays the
 By default, it display is located at [http://localhost:8000/viz.html](http://localhost:8000/viz.html)
 
 ## Execution example
-### Metric computation
+
+### 1. Metric computation
 ```
 $> java -jar meta4ics.jar examples/simple/example1.json
 == META4ICS v0.53.1 ==
@@ -47,7 +48,7 @@ Solution saved in: ./view/sol.json
 == META4ICS ended at 2019-06-10 19:52:04.058 ==
 ```
 
-### View the solution
+### 2. View the solution
 ```
 $> ./web-viewer.py
 Running in Python 2...
