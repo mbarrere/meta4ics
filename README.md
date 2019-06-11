@@ -1,7 +1,27 @@
 # META4ICS - Metric Analyser for Industrial Control Systems
 ### Version 0.53.1
 
+
+## Requirements
+* Java 8
+* Python 2 or 3
+* [Optional] Python 3, PuLP, and Gurobi to enable second MaxSAT solver
+
 ## Usage
+
+1. Compute metric: ```java -jar meta4ics.jar inputFile.json [-c configFile]```
+This step executes META4ICS with an input JSON file that describes the network under analysis. 
+The method used by META4ICS to compute the critical nodes is fully described in our paper: 
+[Identifying Security-Critical Cyber-Physical Components in Industrial Control Systems](https://arxiv.org/abs/1905.04796)
+
+2. Visualise solution graph: ```./web-viewer.py```
+This command launches the webviewer (Python-based HTTP server) that displays the AND/OR graph with the critical nodes. 
+By default, it starts at [http://localhost:8000/viz.html](http://localhost:8000/viz.html)
+
+## Configuration
+The configuration parameters are stored in the file ```meta4ics.conf```. 
+
+## Usage example
 ```
 $> java -jar meta4ics.jar examples/simple/example1.json
 == META4ICS v0.53.1 ==
