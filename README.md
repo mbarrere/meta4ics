@@ -18,33 +18,11 @@ The method used by META4ICS to compute the critical nodes is fully described in 
 This command launches the webviewer (Python-based HTTP server) that displays the AND/OR graph with the critical nodes. 
 By default, the webviewer reads the file *view/sol.json* and displays it at [http://localhost:8000/viz.html](http://localhost:8000/viz.html)
 
-## Configuration parameters
-The configuration parameters are stored in the file ```meta4ics.conf```. 
-The tool also accepts a different configuration file as argument [-c configFile] to override the configuration in *meta4ics.conf*. If the file *meta4ics.conf* is not present, META4ICS uses the default configuration values (see below). 
-
-### Solvers
-* ```solvers.sat4j = true``` Enables/disables default MaxSAT solver (*default=true*)
-* ```solvers.optim = false``` Enables/disables second Gurobi-based MaxSAT solver (*default=false*)
-
-### Python environment
-* ```python.path = /usr/local/bin/python3``` Specifies the path to the Python 3 binary (only used with the second [optional] Gurobi-based solver). 
-* ```python.solver.path = python/optim.py``` Specifies the path to the Gurobi-based solver. 
-
-### Output flags
-* ```output.sol = true``` Indicates META4ICS to output the JSON solution with the critical nodes. 
-* ```output.wcnf = false``` Enables/disables the specification of the problem in WCNF (DIMACS-like) format (*default=false*). The WCNF file can be used to experiment with other MaxSAT solvers. 
-* ```output.txt = false``` Enables/disables the specification of the problem in a simple list-based representation file (*default=false*). 
 
 
-### Output folders
-* ```folders.output = output``` Specifies the default output folder for *.wcnf* and *.txt* files.
-* ```folders.view = view``` Specifies the default view folder where the solution (*sol.json*) is stored. 
+## Execution examples
 
-### Debug
-* ```tool.debug = false``` Enables light debugging. 
-* ```tool.fulldebug = false``` Enables full (heavy) debugging. 
-
-## EXAMPLE 1: AND/OR graphs with weighted nodes
+### EXAMPLE 1: AND/OR graphs with weighted nodes
 ```
 $> java -jar meta4ics.jar examples/simple/example1.json
 == META4ICS v0.53.1 ==
@@ -85,7 +63,7 @@ You should see the graph and the critical nodes:
 ![Screenshot - simple example](https://github.com/mbarrere/meta4ics/blob/master/screenshots/example1.png)
 
 
-## EXAMPLE 2: AND/OR graphs with multiple overlapping security measures (AND/OR hypergraph)
+### EXAMPLE 2: AND/OR hypergraph (multiple overlapping security measures)
 ```
 $> java -jar meta4ics.jar examples/hypergraphs/ics-expanded.json 
 == META4ICS v0.53.1 ==
@@ -142,5 +120,29 @@ You should see the following hypergraph and critical nodes:
 
 
 
+## Configuration parameters
+The configuration parameters are stored in the file ```meta4ics.conf```. 
+The tool also accepts a different configuration file as argument [-c configFile] to override the configuration in *meta4ics.conf*. If the file *meta4ics.conf* is not present, META4ICS uses the default configuration values (see below). 
 
+### Solvers
+* ```solvers.sat4j = true``` Enables/disables default MaxSAT solver (*default=true*)
+* ```solvers.optim = false``` Enables/disables second Gurobi-based MaxSAT solver (*default=false*)
+
+### Python environment
+* ```python.path = /usr/local/bin/python3``` Specifies the path to the Python 3 binary (only used with the second [optional] Gurobi-based solver). 
+* ```python.solver.path = python/optim.py``` Specifies the path to the Gurobi-based solver. 
+
+### Output flags
+* ```output.sol = true``` Indicates META4ICS to output the JSON solution with the critical nodes. 
+* ```output.wcnf = false``` Enables/disables the specification of the problem in WCNF (DIMACS-like) format (*default=false*). The WCNF file can be used to experiment with other MaxSAT solvers. 
+* ```output.txt = false``` Enables/disables the specification of the problem in a simple list-based representation file (*default=false*). 
+
+
+### Output folders
+* ```folders.output = output``` Specifies the default output folder for *.wcnf* and *.txt* files.
+* ```folders.view = view``` Specifies the default view folder where the solution (*sol.json*) is stored. 
+
+### Debug
+* ```tool.debug = false``` Enables light debugging. 
+* ```tool.fulldebug = false``` Enables full (heavy) debugging. 
 
