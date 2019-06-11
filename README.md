@@ -152,3 +152,5 @@ The tool also accepts a different configuration file as argument [-c configFile]
 * ```tool.debug = false``` Enables light debugging. 
 * ```tool.fulldebug = false``` Enables full (heavy) debugging. 
 
+## Licence
+Apache License 2.0
