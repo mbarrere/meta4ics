@@ -1,65 +1,301 @@
 {
   "graph" : {
-    "source" : "s",
+    "source" : "_s_",
     "target" : "c1",
     "nodes" : [ {
       "id" : "c1",
       "type" : "actuator",
       "value" : "inf",
       "label" : "inf",
-      "measures" : null,
+      "measures" : [ {
+        "id" : "F1-1",
+        "type" : "F1"
+      }, {
+        "id" : "B2-1",
+        "type" : "B2"
+      } ],
       "icon" : null
     }, {
-      "id" : "d",
+      "id" : "s5",
+      "type" : "sensor",
+      "value" : "0",
+      "label" : "14",
+      "measures" : [ {
+        "id" : "F1-2",
+        "type" : "F1"
+      }, {
+        "id" : "B1-1",
+        "type" : "B1"
+      }, {
+        "id" : "A3-1",
+        "type" : "A3"
+      }, {
+        "id" : "P2-2",
+        "type" : "P2"
+      } ],
+      "icon" : null
+    }, {
+      "id" : "s4",
+      "type" : "sensor",
+      "value" : "0",
+      "label" : "14",
+      "measures" : [ {
+        "id" : "F1-2",
+        "type" : "F1"
+      }, {
+        "id" : "B1-1",
+        "type" : "B1"
+      }, {
+        "id" : "A3-1",
+        "type" : "A3"
+      }, {
+        "id" : "P2-1",
+        "type" : "P2"
+      } ],
+      "icon" : null
+    }, {
+      "id" : "s6",
+      "type" : "sensor",
+      "value" : "0",
+      "label" : "25",
+      "measures" : [ {
+        "id" : "F2-2",
+        "type" : "F2"
+      }, {
+        "id" : "P1-3",
+        "type" : "P1"
+      }, {
+        "id" : "A2-3",
+        "type" : "A2"
+      }, {
+        "id" : "A3-1",
+        "type" : "A3"
+      } ],
+      "icon" : null
+    }, {
+      "id" : "s3",
+      "type" : "sensor",
+      "value" : "0",
+      "label" : "22",
+      "measures" : [ {
+        "id" : "F2-1",
+        "type" : "F2"
+      }, {
+        "id" : "P1-2",
+        "type" : "P1"
+      }, {
+        "id" : "A2-2",
+        "type" : "A2"
+      } ],
+      "icon" : null
+    }, {
+      "id" : "a3",
       "type" : "agent",
-      "value" : "10",
-      "label" : "10",
+      "value" : "0",
+      "label" : "6",
+      "measures" : [ {
+        "id" : "F1-2",
+        "type" : "F1"
+      }, {
+        "id" : "B1-1",
+        "type" : "B1"
+      }, {
+        "id" : "A3-1",
+        "type" : "A3"
+      } ],
+      "icon" : null
+    }, {
+      "id" : "a9",
+      "type" : "agent",
+      "value" : "0",
+      "label" : "6",
+      "measures" : [ {
+        "id" : "F1-2",
+        "type" : "F1"
+      }, {
+        "id" : "B1-1",
+        "type" : "B1"
+      }, {
+        "id" : "A3-1",
+        "type" : "A3"
+      } ],
+      "icon" : null
+    }, {
+      "id" : "a1",
+      "type" : "agent",
+      "value" : "0",
+      "label" : "6",
+      "measures" : [ {
+        "id" : "F1-2",
+        "type" : "F1"
+      }, {
+        "id" : "B1-1",
+        "type" : "B1"
+      }, {
+        "id" : "A3-1",
+        "type" : "A3"
+      } ],
+      "icon" : null
+    }, {
+      "id" : "s1",
+      "type" : "sensor",
+      "value" : "0",
+      "label" : "9",
+      "measures" : [ {
+        "id" : "F1-1",
+        "type" : "F1"
+      }, {
+        "id" : "B2-1",
+        "type" : "B2"
+      } ],
+      "icon" : null
+    }, {
+      "id" : "s2",
+      "type" : "sensor",
+      "value" : "0",
+      "label" : "9",
+      "measures" : [ {
+        "id" : "F1-1",
+        "type" : "F1"
+      }, {
+        "id" : "B2-1",
+        "type" : "B2"
+      } ],
+      "icon" : null
+    }, {
+      "id" : "a2",
+      "type" : "agent",
+      "value" : "0",
+      "label" : "29",
+      "measures" : [ {
+        "id" : "F1-1",
+        "type" : "F1"
+      }, {
+        "id" : "B2-1",
+        "type" : "B2"
+      }, {
+        "id" : "A2-1",
+        "type" : "A2"
+      }, {
+        "id" : "P1-1",
+        "type" : "P1"
+      } ],
+      "icon" : null
+    }, {
+      "id" : "a7",
+      "type" : "agent",
+      "value" : "0",
+      "label" : "29",
+      "measures" : [ {
+        "id" : "F1-1",
+        "type" : "F1"
+      }, {
+        "id" : "B2-1",
+        "type" : "B2"
+      }, {
+        "id" : "A2-1",
+        "type" : "A2"
+      }, {
+        "id" : "P1-1",
+        "type" : "P1"
+      } ],
+      "icon" : null
+    }, {
+      "id" : "a8",
+      "type" : "agent",
+      "value" : "0",
+      "label" : "29",
+      "measures" : [ {
+        "id" : "F1-1",
+        "type" : "F1"
+      }, {
+        "id" : "B2-1",
+        "type" : "B2"
+      }, {
+        "id" : "A2-1",
+        "type" : "A2"
+      }, {
+        "id" : "P1-1",
+        "type" : "P1"
+      } ],
+      "icon" : null
+    }, {
+      "id" : "a10",
+      "type" : "agent",
+      "value" : "0",
+      "label" : "29",
+      "measures" : [ {
+        "id" : "F1-1",
+        "type" : "F1"
+      }, {
+        "id" : "B2-1",
+        "type" : "B2"
+      }, {
+        "id" : "A2-1",
+        "type" : "A2"
+      }, {
+        "id" : "P1-1",
+        "type" : "P1"
+      } ],
+      "icon" : null
+    }, {
+      "id" : "s1-s2",
+      "type" : "and",
+      "value" : "none",
+      "label" : null,
       "measures" : null,
       "icon" : null
     }, {
-      "id" : "or-d",
+      "id" : "a7-a8",
+      "type" : "and",
+      "value" : "none",
+      "label" : null,
+      "measures" : null,
+      "icon" : null
+    }, {
+      "id" : "s3-a1",
+      "type" : "and",
+      "value" : "none",
+      "label" : null,
+      "measures" : null,
+      "icon" : null
+    }, {
+      "id" : "a7-a10",
+      "type" : "and",
+      "value" : "none",
+      "label" : null,
+      "measures" : null,
+      "icon" : null
+    }, {
+      "id" : "or-a2",
       "type" : "or",
       "value" : "none",
-      "label" : "or-d",
+      "label" : null,
       "measures" : null,
       "icon" : null
     }, {
-      "id" : "c",
-      "type" : "agent",
-      "value" : "2",
-      "label" : "2",
+      "id" : "or-a1",
+      "type" : "or",
+      "value" : "none",
+      "label" : null,
       "measures" : null,
       "icon" : null
     }, {
-      "id" : "b",
-      "type" : "agent",
-      "value" : "5",
-      "label" : "5",
-      "measures" : null,
-      "icon" : null
-    }, {
-      "id" : "a",
-      "type" : "agent",
-      "value" : "2",
-      "label" : "2",
-      "measures" : null,
-      "icon" : null
-    }, {
-      "id" : "a-b",
+      "id" : "s3-s6",
       "type" : "and",
       "value" : "none",
-      "label" : "a-b",
+      "label" : null,
       "measures" : null,
       "icon" : null
     }, {
-      "id" : "b-c",
+      "id" : "s4-s6",
       "type" : "and",
       "value" : "none",
-      "label" : "b-c",
+      "label" : null,
       "measures" : null,
       "icon" : null
     }, {
-      "id" : "s",
+      "id" : "_s_",
       "type" : "init",
       "value" : "inf",
       "label" : "inf",
@@ -67,80 +303,256 @@
       "icon" : null
     } ],
     "edges" : [ {
-      "source" : "d",
+      "source" : "s5",
+      "target" : "or-a1",
+      "value" : null,
+      "label" : null
+    }, {
+      "source" : "s4",
+      "target" : "s4-s6",
+      "value" : null,
+      "label" : null
+    }, {
+      "source" : "s6",
+      "target" : "s4-s6",
+      "value" : null,
+      "label" : null
+    }, {
+      "source" : "s6",
+      "target" : "s3-s6",
+      "value" : null,
+      "label" : null
+    }, {
+      "source" : "s4-s6",
+      "target" : "a3",
+      "value" : null,
+      "label" : null
+    }, {
+      "source" : "s3-s6",
+      "target" : "a9",
+      "value" : null,
+      "label" : null
+    }, {
+      "source" : "a3",
+      "target" : "or-a1",
+      "value" : null,
+      "label" : null
+    }, {
+      "source" : "a9",
+      "target" : "or-a1",
+      "value" : null,
+      "label" : null
+    }, {
+      "source" : "s3",
+      "target" : "s3-s6",
+      "value" : null,
+      "label" : null
+    }, {
+      "source" : "or-a1",
+      "target" : "a1",
+      "value" : null,
+      "label" : null
+    }, {
+      "source" : "a1",
+      "target" : "s3-a1",
+      "value" : null,
+      "label" : null
+    }, {
+      "source" : "s3",
+      "target" : "s3-a1",
+      "value" : null,
+      "label" : null
+    }, {
+      "source" : "s1",
+      "target" : "s1-s2",
+      "value" : null,
+      "label" : null
+    }, {
+      "source" : "s2",
+      "target" : "s1-s2",
+      "value" : null,
+      "label" : null
+    }, {
+      "source" : "s1-s2",
+      "target" : "a7",
+      "value" : null,
+      "label" : null
+    }, {
+      "source" : "a7",
+      "target" : "a7-a10",
+      "value" : null,
+      "label" : null
+    }, {
+      "source" : "a7",
+      "target" : "a7-a8",
+      "value" : null,
+      "label" : null
+    }, {
+      "source" : "a7-a8",
+      "target" : "a10",
+      "value" : null,
+      "label" : null
+    }, {
+      "source" : "a8",
+      "target" : "a7-a8",
+      "value" : null,
+      "label" : null
+    }, {
+      "source" : "a10",
+      "target" : "a7-a10",
+      "value" : null,
+      "label" : null
+    }, {
+      "source" : "s3-a1",
+      "target" : "or-a2",
+      "value" : null,
+      "label" : null
+    }, {
+      "source" : "a7-a10",
+      "target" : "or-a2",
+      "value" : null,
+      "label" : null
+    }, {
+      "source" : "or-a2",
+      "target" : "a2",
+      "value" : null,
+      "label" : null
+    }, {
+      "source" : "a2",
       "target" : "c1",
-      "value" : "inf",
-      "label" : "agent-actuator"
+      "value" : null,
+      "label" : null
     }, {
-      "source" : "or-d",
-      "target" : "d",
-      "value" : "1",
-      "label" : "or-agent"
-    }, {
-      "source" : "a-b",
-      "target" : "or-d",
-      "value" : "1",
-      "label" : "and-or"
-    }, {
-      "source" : "b-c",
-      "target" : "or-d",
-      "value" : "1",
-      "label" : "and-or"
-    }, {
-      "source" : "a",
-      "target" : "a-b",
-      "value" : "1",
-      "label" : "agent-and"
-    }, {
-      "source" : "b",
-      "target" : "a-b",
-      "value" : "1",
-      "label" : "agent-and"
-    }, {
-      "source" : "b",
-      "target" : "b-c",
-      "value" : "1",
-      "label" : "agent-and"
-    }, {
-      "source" : "c",
-      "target" : "b-c",
-      "value" : "1",
-      "label" : "agent-and"
-    }, {
-      "source" : "s",
-      "target" : "a",
+      "source" : "_s_",
+      "target" : "s5",
       "value" : "inf",
       "label" : "init-sensor"
     }, {
-      "source" : "s",
-      "target" : "b",
+      "source" : "_s_",
+      "target" : "s4",
       "value" : "inf",
       "label" : "init-sensor"
     }, {
-      "source" : "s",
-      "target" : "c",
+      "source" : "_s_",
+      "target" : "s6",
       "value" : "inf",
       "label" : "init-sensor"
+    }, {
+      "source" : "_s_",
+      "target" : "s3",
+      "value" : "inf",
+      "label" : "init-sensor"
+    }, {
+      "source" : "_s_",
+      "target" : "s1",
+      "value" : "inf",
+      "label" : "init-sensor"
+    }, {
+      "source" : "_s_",
+      "target" : "s2",
+      "value" : "inf",
+      "label" : "init-sensor"
+    }, {
+      "source" : "_s_",
+      "target" : "a8",
+      "value" : "inf",
+      "label" : "init-agent"
     } ]
   },
   "cut" : {
     "nodes" : [ {
-      "id" : "a",
-      "type" : "agent",
-      "value" : "2",
-      "label" : "2",
+      "id" : "F1-1",
+      "type" : "F1",
+      "value" : "1",
+      "label" : null,
       "measures" : null,
       "icon" : null
     }, {
-      "id" : "c",
-      "type" : "agent",
-      "value" : "2",
-      "label" : "2",
+      "id" : "B2-1",
+      "type" : "B2",
+      "value" : "8",
+      "label" : null,
       "measures" : null,
       "icon" : null
+    }, {
+      "id" : "a1",
+      "type" : "agent",
+      "value" : "0",
+      "label" : "6",
+      "measures" : [ {
+        "id" : "F1-2",
+        "type" : "F1"
+      }, {
+        "id" : "B1-1",
+        "type" : "B1"
+      }, {
+        "id" : "A3-1",
+        "type" : "A3"
+      } ],
+      "icon" : null
+    }, {
+      "id" : "F1-2",
+      "type" : "F1",
+      "value" : "1",
+      "label" : null,
+      "measures" : null,
+      "icon" : null
+    }, {
+      "id" : "B1-1",
+      "type" : "B1",
+      "value" : "2",
+      "label" : null,
+      "measures" : null,
+      "icon" : null
+    }, {
+      "id" : "A3-1",
+      "type" : "A3",
+      "value" : "3",
+      "label" : null,
+      "measures" : null,
+      "icon" : null
+    }, {
+      "id" : "s2",
+      "type" : "sensor",
+      "value" : "0",
+      "label" : "9",
+      "measures" : [ {
+        "id" : "F1-1",
+        "type" : "F1"
+      }, {
+        "id" : "B2-1",
+        "type" : "B2"
+      } ],
+      "icon" : null
     } ],
-    "measureByInstanceIdMap" : { },
-    "cost" : 4.0,
+    "measureByInstanceIdMap" : {
+      "F1-1" : {
+        "id" : "F1",
+        "cost" : "1",
+        "desc" : "Wire Fenced area"
+      },
+      "B2-1" : {
+        "id" : "B2",
+        "cost" : "8",
+        "desc" : "Secure Locked Building"
+      },
+      "F1-2" : {
+        "id" : "F1",
+        "cost" : "1",
+        "desc" : "Wire Fenced area"
+      },
+      "B1-1" : {
+        "id" : "B1",
+        "cost" : "2",
+        "desc" : "Locked Building"
+      },
+      "A3-1" : {
+        "id" : "A3",
+        "cost" : "3",
+        "desc" : "Patrol Unit"
+      }
+    },
+    "cost" : 15.0,
     "solverId" : "MAX-SAT-SOLVER"
   }
 }
