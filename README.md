@@ -18,9 +18,9 @@ The method used by META4ICS to compute the critical nodes is fully described in 
 This command launches the webviewer (Python-based HTTP server) that displays the AND/OR graph with the critical nodes. 
 By default, it display is located at [http://localhost:8000/viz.html](http://localhost:8000/viz.html)
 
-## Execution example
+## Execution examples
 
-### 1. Metric computation
+### 1. AND/OR graphs with single costs on nodes
 ```
 $> java -jar meta4ics.jar examples/simple/example1.json
 == META4ICS v0.53.1 ==
@@ -48,7 +48,7 @@ Solution saved in: ./view/sol.json
 == META4ICS ended at 2019-06-10 19:52:04.058 ==
 ```
 
-### 2. View the solution
+##### 2. View the solution
 ```
 $> ./web-viewer.py
 Running in Python 2...
@@ -59,6 +59,62 @@ Go to the browser and insert the viewer's URL: [http://localhost:8000/viz.html](
 You should see the graph and the critical nodes:
 
 ![Screenshot - simple example](https://github.com/mbarrere/meta4ics/blob/master/screenshots/example1.png)
+
+
+
+```
+$> java -jar meta4ics.jar examples/hypergraphs/ics-expanded.json 
+== META4ICS v0.53.1 ==
+== Started at 2019-06-11 15:54:33.639 ==
+
+=> Loading problem specification...  done in 242 ms (0 seconds).
+----------------------------------
+Problem source: _s_
+Problem target: c1
+Available measures: 
+	Measure [id=F1, cost=1, desc=Wire Fenced area]
+	Measure [id=F2, cost=2, desc=Underground Facility]
+	Measure [id=B1, cost=2, desc=Locked Building]
+	Measure [id=B2, cost=8, desc=Secure Locked Building]
+	Measure [id=A1, cost=12, desc=Door Alarm]
+	Measure [id=A2, cost=18, desc=Alarm on Telemetry]
+	Measure [id=A3, cost=3, desc=Patrol Unit]
+	Measure [id=P1, cost=2, desc=Locked Box]
+	Measure [id=P2, cost=8, desc=Cable Protection]
+----------------------------------
+=> Performing Tseitin transformation...  done in 10 ms (0 seconds).
+|+| Solvers: [MaxSAT]
+
+==================================
+=> BEST solution found by MAX-SAT-SOLVER for:
+Source: _s_
+Target: c1
+=== Security Metric ===
+CUT cost: 15.0
+Total critical nodes: 2
+Involved security measures: 5
+[+] Critical nodes: (a1,0); (s2,0); 
+[+] Security measure instances: 
+	(F1-1,1) -> [c1,s1,s2,a2,a7,a8,a10];
+	(B2-1,8) -> [c1,s1,s2,a2,a7,a8,a10];
+	(F1-2,1) -> [s5,s4,a3,a9,a1];
+	(B1-1,2) -> [s5,s4,a3,a9,a1];
+	(A3-1,3) -> [s5,s4,s6,a3,a9,a1];
+[+] Full solution: (F1-1,1); (B2-1,8); (a1,0); (F1-2,1); (B1-1,2); (A3-1,3); (s2,0); 
+[+] Critical nodes display: (a1,6); (s2,9); 
+[*] Metric computation time: 69 ms (0 seconds).
+==================================
+Solution saved in: ./view/sol.json
+== META4ICS ended at 2019-06-11 15:54:34.003 ==
+```
+
+##### 2. View the solution
+
+Go to the browser and insert the viewer's URL: [http://localhost:8000/viz.html](http://localhost:8000/viz.html)
+
+You should see the graph and the critical nodes:
+
+![Screenshot - hypergraph example](https://github.com/mbarrere/meta4ics/blob/master/screenshots/ics-expanded.png)
 
 
 ## Configuration parameters
