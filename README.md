@@ -25,23 +25,23 @@ The configuration parameters are stored in the file ```meta4ics.conf```.
 * ```solvers.sat4j = true``` Enables/disables default MaxSAT solver (*default=true*)
 * ```solvers.optim = false``` Enables/disables second Gurobi-based MaxSAT solver (*default=false*)
 
-# Python environment
-* python.path = /usr/local/bin/python3
-* python.solver.path = python/optim.py
+### Python environment
+* ```python.path = /usr/local/bin/python3```
+* ```python.solver.path = python/optim.py```
 
 ### Output
-* *output.sol = true* Indicates META4ICS to output the JSON solution with the critical nodes. 
-* *output.wcnf = false* Enables/disables the specification of the problem in WCNF (DIMACS-like) format (*default=false*). The WCNF file can be used to experiment with other MaxSAT solvers. 
-* *output.txt = false* Enables/disables the specification of the problem in a simple list-based representation file (*default=false*). 
+* ```output.sol = true``` Indicates META4ICS to output the JSON solution with the critical nodes. 
+* ```output.wcnf = false``` Enables/disables the specification of the problem in WCNF (DIMACS-like) format (*default=false*). The WCNF file can be used to experiment with other MaxSAT solvers. 
+* ```output.txt = false``` Enables/disables the specification of the problem in a simple list-based representation file (*default=false*). 
 
 
 ### Output folders
-* folders.output = output
-* folders.view = view
+* ```folders.output = output```
+* ```folders.view = view```
 
 ### Debug
-* tool.debug = false
-* tool.fulldebug = false
+* ```tool.debug = false```
+* ```tool.fulldebug = false```
 
 
 ## Execution example
