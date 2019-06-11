@@ -73,7 +73,7 @@ The tool also accepts a different configuration file as argument [-c configFile]
 * ```python.path = /usr/local/bin/python3``` Specifies the path to the Python 3 binary (only used with the second [optional] Gurobi-based solver). 
 * ```python.solver.path = python/optim.py``` Specifies the path to the Gurobi-based solver. 
 
-### Output
+### Output flags
 * ```output.sol = true``` Indicates META4ICS to output the JSON solution with the critical nodes. 
 * ```output.wcnf = false``` Enables/disables the specification of the problem in WCNF (DIMACS-like) format (*default=false*). The WCNF file can be used to experiment with other MaxSAT solvers. 
 * ```output.txt = false``` Enables/disables the specification of the problem in a simple list-based representation file (*default=false*). 
