@@ -126,9 +126,9 @@ You should see the following hypergraph and critical nodes:
 ---
 
 
-## Configuration parameters
-The configuration parameters are stored in the file ```meta4ics.conf```. 
-The tool also accepts a different configuration file as argument [-c configFile] to override the configuration in *meta4ics.conf*. If the file *meta4ics.conf* is not present, META4ICS uses the default configuration values (see below). 
+## Configuration parameters `meta4ics.conf`
+The configuration parameters are stored in the file `meta4ics.conf`. 
+The tool also accepts a different configuration file as argument [-c configFile] to override the configuration in *meta4ics.conf*. If the file `meta4ics.conf` is not present, META4ICS uses the default configuration values (see below). 
 
 ### Solvers
 * ```solvers.sat4j = true``` Enables/disables default MaxSAT solver (*default=true*)
