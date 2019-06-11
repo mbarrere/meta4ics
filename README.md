@@ -4,8 +4,8 @@
 
 ## Requirements
 * Java 8
-* Python 2 or 3
-* [Optional] Python 3, PuLP, and Gurobi to enable second MaxSAT solver
+* Python 2/3
+* Optional: Python 3, PuLP, and Gurobi to enable second MaxSAT solver
 
 ## Usage
 
@@ -20,8 +20,15 @@ By default, it starts at [http://localhost:8000/viz.html](http://localhost:8000/
 
 ## Configuration
 The configuration parameters are stored in the file ```meta4ics.conf```. 
+### Output
+* *output.sol = true* Indicates META4ICS to output the JSON solution with the critical nodes. 
+* *output.sol = true* Indicates META4ICS to output the JSON solution with the critical nodes. 
 
-## Usage example
+### Output folders
+folders.output = output
+folders.view = view
+
+## Execution example
 ```
 $> java -jar meta4ics.jar examples/simple/example1.json
 == META4ICS v0.53.1 ==
