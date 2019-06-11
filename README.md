@@ -55,6 +55,8 @@ Solution saved in: ./view/sol.json
 ##### Run the webviewer:
 ```
 $> ./web-viewer.py
+```
+```
 Running in Python 2...
 ('Started HTTP server on port ', 8000)
 ```
@@ -68,6 +70,8 @@ You should see the following AND/OR graph along with its critical nodes (*a* and
 ### Example 2: AND/OR hypergraph (multiple overlapping security measures)
 ```
 $> java -jar meta4ics.jar examples/hypergraphs/ics-expanded.json 
+```
+```
 == META4ICS v0.53.1 ==
 == Started at 2019-06-11 15:54:33.639 ==
 
