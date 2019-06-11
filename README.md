@@ -20,7 +20,7 @@ By default, it display is located at [http://localhost:8000/viz.html](http://loc
 
 ## Execution examples
 
-### 1. AND/OR graphs with single costs on nodes
+### AND/OR graphs with single costs on nodes
 ```
 $> java -jar meta4ics.jar examples/simple/example1.json
 == META4ICS v0.53.1 ==
@@ -48,7 +48,7 @@ Solution saved in: ./view/sol.json
 == META4ICS ended at 2019-06-10 19:52:04.058 ==
 ```
 
-##### 2. View the solution
+##### View the solution
 ```
 $> ./web-viewer.py
 Running in Python 2...
@@ -61,7 +61,7 @@ You should see the graph and the critical nodes:
 ![Screenshot - simple example](https://github.com/mbarrere/meta4ics/blob/master/screenshots/example1.png)
 
 
-
+### AND/OR hypergraphs (multiple overlapping security measures)
 ```
 $> java -jar meta4ics.jar examples/hypergraphs/ics-expanded.json 
 == META4ICS v0.53.1 ==
@@ -108,11 +108,10 @@ Solution saved in: ./view/sol.json
 == META4ICS ended at 2019-06-11 15:54:34.003 ==
 ```
 
-##### 2. View the solution
+##### View the solution
 
-Go to the browser and insert the viewer's URL: [http://localhost:8000/viz.html](http://localhost:8000/viz.html)
-
-You should see the graph and the critical nodes:
+If the webviewer is active, just go to [http://localhost:8000/viz.html](http://localhost:8000/viz.html), otherwise launch the webviewer (as shown in the first example) and follow the link. 
+You should see the following hypergraph and critical nodes:  
 
 ![Screenshot - hypergraph example](https://github.com/mbarrere/meta4ics/blob/master/screenshots/ics-expanded.png)
 
