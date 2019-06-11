@@ -15,7 +15,7 @@ The method used by META4ICS to identify critical nodes is fully described in our
 [Identifying Security-Critical Cyber-Physical Components in Industrial Control Systems](https://arxiv.org/abs/1905.04796)
 
 2. ```./web-viewer.py```  
-This command launches the webviewer (Python-based HTTP server) that displays the AND/OR graph with the critical nodes. 
+This command launches the webviewer (Python-based HTTP server) that displays the AND/OR graph as well as its critical nodes. 
 By default, the webviewer reads the file *view/sol.json* and displays it at [http://localhost:8000/viz.html](http://localhost:8000/viz.html)
 
 
@@ -25,6 +25,8 @@ By default, the webviewer reads the file *view/sol.json* and displays it at [htt
 ### Example 1: AND/OR graphs with weighted nodes
 ```
 $> java -jar meta4ics.jar examples/simple/example1.json
+```
+```
 == META4ICS v0.53.1 ==
 == Started at 2019-06-10 19:52:03.741 ==
 
@@ -50,7 +52,7 @@ Solution saved in: ./view/sol.json
 == META4ICS ended at 2019-06-10 19:52:04.058 ==
 ```
 
-##### View the solution
+##### Run the webviewer:
 ```
 $> ./web-viewer.py
 Running in Python 2...
@@ -110,7 +112,7 @@ Solution saved in: ./view/sol.json
 == META4ICS ended at 2019-06-11 15:54:34.003 ==
 ```
 
-##### View the solution
+##### Run the webviewer:
 
 If the webviewer is active, just go to [http://localhost:8000/viz.html](http://localhost:8000/viz.html), otherwise launch the webviewer (as shown in the first example) and follow the link. 
 You should see the following hypergraph and critical nodes:  
