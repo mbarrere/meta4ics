@@ -11,7 +11,7 @@
 
 1. ```java -jar meta4ics.jar inputFile.json [-c configFile]```  
 This command executes META4ICS with an input JSON file that describes the network under analysis. 
-The method used by META4ICS to compute the critical nodes is fully described in our paper: 
+The method used by META4ICS to identify critical nodes is fully described in our paper: 
 [Identifying Security-Critical Cyber-Physical Components in Industrial Control Systems](https://arxiv.org/abs/1905.04796)
 
 2. ```./web-viewer.py```  
@@ -22,7 +22,7 @@ By default, the webviewer reads the file *view/sol.json* and displays it at [htt
 
 ## Execution examples
 
-### EXAMPLE 1: AND/OR graphs with weighted nodes
+### Example 1: AND/OR graphs with weighted nodes
 ```
 $> java -jar meta4ics.jar examples/simple/example1.json
 == META4ICS v0.53.1 ==
@@ -56,14 +56,14 @@ $> ./web-viewer.py
 Running in Python 2...
 ('Started HTTP server on port ', 8000)
 ```
-Go to the browser and insert the viewer's URL: [http://localhost:8000/viz.html](http://localhost:8000/viz.html)  
-You should see the graph and the critical nodes:
+In the browser, go to [http://localhost:8000/viz.html](http://localhost:8000/viz.html)  
+You should see the following AND/OR graph along with its critical nodes (*a* and *c*):
 
 ![Screenshot - simple example](https://github.com/mbarrere/meta4ics/blob/master/screenshots/example1.png)
 
 ---
 
-### EXAMPLE 2: AND/OR hypergraph (multiple overlapping security measures)
+### Example 2: AND/OR hypergraph (multiple overlapping security measures)
 ```
 $> java -jar meta4ics.jar examples/hypergraphs/ics-expanded.json 
 == META4ICS v0.53.1 ==
@@ -117,7 +117,7 @@ You should see the following hypergraph and critical nodes:
 
 ![Screenshot - hypergraph example](https://github.com/mbarrere/meta4ics/blob/master/screenshots/ics-expanded.png)
 
-
+---
 
 
 ## Configuration parameters
