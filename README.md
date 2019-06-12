@@ -1,6 +1,12 @@
 # META4ICS - Metric Analyser for Industrial Control Systems
 ### Version 0.53.1
 
+## Contents
+- [Requirements](#requirements)
+- [Usage](#usage)
+- [Execution examples](#execution-examples)
+- [Configuration parameters](#configuration-parameters)
+- [Licence](#licence)
 
 ## Requirements
 * Java 8
