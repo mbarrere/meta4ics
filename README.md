@@ -1,5 +1,5 @@
 # META4ICS - Metric Analyser for Industrial Control Systems
-### Version 0.53.1
+### Version 0.54.0
 
 ## Contents
 - [Requirements](#requirements)
