@@ -1,0 +1,157 @@
+{
+    "graph": {
+
+        "source":"s",
+
+	"target":"c1", 
+
+        "nodes": [
+            {
+                "id": "c1",
+                "type": "actuator",
+                "label": "c1", 
+                "value": "inf", 
+		"measures": [
+ 			{"id": "s5", "type": "M5"}
+ 		]
+            },
+            {
+                "id": "d",
+                "type": "agent",
+                "label": "d", 
+                "value": "0", 
+		"measures": [
+ 			{"id": "s4", "type": "M4"}
+ 		]
+            }, 
+	    {
+                "id": "or-d",
+                "type": "or",
+                "label": "or-d", 
+                "value": "none"
+            }, 
+	    {
+                "id": "c",
+                "type": "agent",
+                "label": "c", 
+                "value": "0", 
+		"measures": [
+ 			{"id": "s1", "type": "M2"}
+ 		]
+            },
+            {
+                "id": "b",
+                "type": "agent",
+                "label": "b", 
+                "value": "0", 
+		"measures": [
+ 			{"id": "s2", "type": "M3"}
+ 		]
+            },
+	    {
+                "id": "a",
+                "type": "agent",
+                "label": "a", 
+                "value": "0", 
+		"measures": [
+ 			{"id": "s1", "type": "M2"}, {"id": "s3", "type": "M1"}
+ 		]
+            },
+	    {
+                "id": "a-b",
+                "type": "and",
+                "label": "a-b", 
+                "value": "none"
+            },
+	    {
+                "id": "b-c",
+                "type": "and",
+                "label": "b-c", 
+                "value": "none"
+            },              
+	    {
+                "id": "s",
+                "type": "init",
+                "label": "s", 
+                "value": "inf"
+            }
+        ],
+
+        "edges": [
+            {
+                "source": "d",            
+                "target": "c1",
+                "label": "agent-actuator",
+		"value":"inf"
+            }, 
+	    {
+                "source": "or-d",
+                "target": "d",
+                "label": "or-agent",
+		"value":"1"
+            },
+	    {
+                "source": "a-b",            
+                "target": "or-d",
+                "label": "and-or",
+		"value":"1"
+            }, 
+	    {
+                "source": "b-c",
+                "target": "or-d",
+                "label": "and-or",
+		"value":"1"
+            }, 
+	    {
+                "source": "a",
+                "target": "a-b",
+                "label": "agent-and",
+		"value":"1"
+            },
+	    {
+                "source": "b",
+                "target": "a-b",
+                "label": "agent-and",
+		"value":"1"
+            },
+	    {
+                "source": "b",
+                "target": "b-c",
+                "label": "agent-and",
+		"value":"1"
+            },
+	    {
+                "source": "c",
+                "target": "b-c",
+                "label": "agent-and",
+		"value":"1"
+            },
+
+	    {
+                "source": "s",
+                "target": "a",
+                "label": "init-sensor",
+		"value":"inf"
+            },
+	    {
+                "source": "s",
+                "target": "b",
+                "label": "init-sensor",
+		"value":"inf"
+            },
+	    {
+                "source": "s",
+                "target": "c",
+                "label": "init-sensor",
+		"value":"inf"
+            }
+        ], 
+	"measures": [
+ 		{ "id": "M1", "cost": "1", "desc": "Sound alarm" }, 
+		{ "id": "M2", "cost": "2", "desc": "Fenced area" },
+ 		{ "id": "M3", "cost": "5", "desc": "Locked container" }, 
+		{ "id": "M4", "cost": "10", "desc": "Tamper-resistant container" },
+ 		{ "id": "M5", "cost": "999", "desc": "Alarmed locked building"}		
+ 	]
+    }
+}
