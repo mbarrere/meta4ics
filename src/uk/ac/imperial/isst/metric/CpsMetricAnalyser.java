@@ -54,7 +54,7 @@ public class CpsMetricAnalyser {
 	}
 	
 	public static void main(String[] args) {
-		String version = "v0.53.1";
+		String version = "v0.54.0";
 		try {
 			System.out.println("== META4ICS " + version + " ==");		
 			System.out.println("== Started at " + new Timestamp(System.currentTimeMillis()) + " ==");

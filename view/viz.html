@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">    
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Martin Barrere">
+    <meta name="version" content="0.54.0">
     <style type="text/css">
         .node { fill: #333; }
-        .link { stroke: #999; stroke-opacity: .6; stroke-width: 1px; }		
+        .link { stroke: #999; stroke-opacity: .6; stroke-width: 1px; }
     </style>
     <style>
 		#drop_zone {
@@ -40,15 +41,15 @@
 		    padding: 5px;
 		    padding-right: 25px;
 		}
-		
-		
+
+
 		.hull {
 		  fill: steelblue;
 		  stroke: steelblue;
 		  stroke-width: 2px;
 		  stroke-linejoin: round;
 		}
-		
+
 		path.hull {
 		  fill: lightsteelblue; /* LightSeaGreen; */
 		  fill-opacity: 0.2;
@@ -59,128 +60,8 @@
 <body>
 
 
-<!--
-//ADD//
-<input type="file" id="files" name="files[]" />
-<output id="list"></output>
 
-<script>
-  function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
-
-    // files is a FileList of File objects. List some properties.
-    var output = [];
-    for (var i = 0, f; f = files[i]; i++) {
-      output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                  f.size, ' bytes, last modified: ',
-                  f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
-                  '</li>');
-    }
-    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-  }
-
-  document.getElementById('files').addEventListener('change', handleFileSelect, false);
-</script>
- -->
- <!--
- <div id="drop_zone">Drop JSON</div>
- <textarea id="result"></textarea>
-  -->
-
-<!--
-<div id="wrap">
-    <div id="drop_zone">
-    <input type="file" style="display: none" />
-    <button>Load JSON</button>
-
-    <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
-    <script>
-      $("button").on("click", function() {
-        $("input").trigger("click");
-        $('input[type=file]').change(function (evt) {
-        	evt.stopPropagation();
-            evt.preventDefault();
-        	var files = evt.target.files; // FileList object
-            //console.log(files[0].name);
-            loadSelectedFile(files[0]);
-        });
-      });
-    </script>
-    </div>
-    <div id="right"><output id="list"></output></div>
-</div>
-
-<script>
-  function handleFileSelect(evt) {
-    evt.stopPropagation();
-    evt.preventDefault();
-
-    var files = evt.dataTransfer.files; // FileList object.
-
-    // files is a FileList of File objects. List some properties.
-
-
-   	if (files.length <= 0) {
-        return false;
-    }
-   	//for (var i = 0, f; f = files[i]; i++) {
-    var f = files[0];
-
-    loadSelectedFile(f);
-
-  }
-
-  function loadSelectedFile (f) {
-	  var output = [];
-      output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                  f.size, ' bytes, last modified: ',
-                  f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
-                  '</li>');
-      //console.log(f)
-      jsonInput = f.name;
-      var fr = new FileReader();
-
-      fr.onload = function(e) {
-      //console.log(e);
-        var result = JSON.parse(e.target.result);
-        //var formatted = JSON.stringify(result, null, 2);
-        	//document.getElementById('result').value = formatted;
-
-        var jsonObj = JSON.parse(e.target.result);
-        	//redraw();
-        	//svg.selectAll(".node").remove();
-    		//svg.selectAll(".link").remove();
-    		svg.selectAll("*").remove();
-
-        	//d3.select("svg").remove();
-    		createChildren();
-    		//update(graphLinks, graphNodes);
-            loadJSONData(jsonObj);
-      }
-
-      fr.readAsText(f);
-
-    //}
-    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-  }
-
-  function handleDragOver(evt) {
-    evt.stopPropagation();
-    evt.preventDefault();
-    evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
-  }
-
-  // Setup the dnd listeners.
-  //var dropZone = document.getElementById('drop_zone');
-  var dropZone = document.getElementById('wrap');
-  dropZone.addEventListener('dragover', handleDragOver, false);
-  dropZone.addEventListener('drop', handleFileSelect, false);
-</script>
--->
-
-
-
-<svg width="1200" height="600"></svg>
+<svg width="1600" height="900"></svg>
 
 <!--
 <script src="http://d3js.org/d3.v4.min.js" type="text/javascript"></script>
@@ -191,7 +72,7 @@
 
 
 <script type="text/javascript">
-    var colors = d3.scaleOrdinal(d3.schemeCategory10);    
+    var colors = d3.scaleOrdinal(d3.schemeCategory10);
     //var fill = d3.scale.category20();
     var fill = d3.scaleOrdinal(d3.schemeCategory20);
     var backgroundColor = '#FFF';
@@ -204,36 +85,18 @@
         height = +svg.attr("height"),
         node,
         link,
-        measuresAvailable; 
-        //hullg,
-    
-    
-    
+        hull,
+        measuresAvailable;
+
     var hullSet = [];
-    
-    //var hull = svg.append("path").attr("class", "hull");
-    
     var curve = d3.curveCardinalClosed.tension(0.85);
-    
-    //hullg = svg.append("g");
-	//var hullg = svg.append("path")
-	//  .attr("class",'hull');
-	
-	//var convexHullPath = svg.append('path')
-    //	.attr ('fill', '#aca')
-    //	.attr ('stroke', '#888')
-    //	.attr ('stroke-width', '6px');
-	
     createChildren();
 
     function createChildren() {
-    	//svg = d3.select("svg");
-    	//width = +svg.attr("width");
-        //height = +svg.attr("height");
+
     	if (zoomEnabled) {
     	    svg = svg
     		.append('svg:g')
-    			//.call(d3.behavior.zoom().on("zoom", redraw))
     			.call(d3.zoom().on("zoom", function () {
     		    	svg.attr("transform", d3.event.transform)
     		 	}))
@@ -244,7 +107,6 @@
     		.attr('width', width)
     		.attr('height', height)
     		.attr('fill', backgroundColor)
-    		//.on("click", showScenarioInfo)
     		;
         }
 
@@ -263,8 +125,9 @@
             //.attr('fill', '#999')
             .attr('fill', '#555')
             .style('stroke','none');
-        
+
         hullg = svg.append("g");
+
     }
 
     var simulation = d3.forceSimulation()
@@ -273,14 +136,15 @@
         //.force("charge", 500)
         .force("center", d3.forceCenter(width / 2, height / 2));
 
-    //var force = d3.forceSimulation().force();
-
     var graphNodes = {};
     var graphLinks = {};
     var cutCost = -1;
     var cutNodes = [];
     var problemSource = "";
     var problemTarget = "";
+    var measures = [];
+    var measureInstanceMap = new Map();
+    var cutMeasures=[];
 
     var defaultJSONInput = "sol.json";
     //var jsonInput = "sec-metric-out.json";//"net-and-or-case1.json"; //"example1.json"
@@ -294,7 +158,6 @@
     //ADD//
     //document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
 
-   	//d3.json("graph.json", function (error, data) {
        d3.json(jsonInput, function (error, data) {
            if (error) throw error;
            loadJSONData(data);
@@ -309,61 +172,99 @@
         graphLinks = data.graph.edges;
 
         if (data.cut) {
-        	console.log("Cut is present");
-        	cutTotal = data.cut.cost;
-        	console.log("Cut total: " + cutTotal);
+          	console.log("Cut is present");
+          	cutTotal = data.cut.cost;
+          	console.log("Cut total cost: " + cutTotal);
 
-        	var length = data.cut.nodes.length;
-        	console.log("Number of nodes in cut: " + length);
-        	for (var i = 0; i < length; i++) {
-        		var cNode = data.cut.nodes[i];
-        		//console.log("CNode: " + cNode);
+          	var length = data.cut.nodes.length;
+          	console.log("Number of nodes in cut solution: " + length);
+          	for (var i = 0; i < length; i++) {
+            		var cNode = data.cut.nodes[i];
+            		//console.log("CNode: " + cNode);
 
-        		for (var j = 0; j < graphNodes.length; j++) {
-        			var gNode = graphNodes[j];
+            		for (var j = 0; j < graphNodes.length; j++) {
+              			var gNode = graphNodes[j];
 
-        			if (gNode.id == cNode.id) {
-        				//console.log("Found GNode: " + gNode);
-        				cutNodes.push(gNode);
-        				break;
-        			}
-
-            	}
-        	}
-        	/*
-        	cutNodes = graphNodes.filter(
-				    function(n) {
-				    	var found = false;
-				    	//while (!found &&)
-
-				    	return data.graph.cut.nodes.forEach(function (c) {
-			    			 if (c.id == n.id) return true;
-			    		});
-				    });
-        	*/
-        	//cutNodes = data.graph.cut.nodes;
-
-        	cutNodes.forEach(function(d){ console.log(d)})
+              			if (gNode.id == cNode.id) {
+              				cutNodes.push(gNode);
+              				break;
+              			}
+                }
+            }
+          	cutNodes.forEach(function(d){ console.log(d)})
         } else {
-        	console.log("Cut is not available");
-        }
-        
-        if (data.cut && data.cut.measureByInstanceIdMap) {        	
-        	console.log("Measures are available");
-        	measuresAvailable = true;
-        	
-        	hullSet = getConvexHullsByMeasure(graphNodes);
-        } else {
-        	console.log("Measures not available");
-        	measuresAvailable = false;
+        	  console.log("Cut is not available");
         }
 
+        if (data.cut && data.cut.measureByInstanceIdMap) {
+          //console.log(Object.keys(data.cut.measureByInstanceIdMap).length === 0);
+          if (Object.keys(data.cut.measureByInstanceIdMap).length > 0) {
+          	console.log("Measures are available");
+          	measuresAvailable = true;
+
+          	hullSet = getConvexHullsByMeasure(graphNodes);
+          } else {
+          	console.log("Measures not available");
+          	measuresAvailable = false;
+          }
+        }
+
+        if (measuresAvailable) {
+          if (data.measures) {
+            data.measures.forEach(function(d){
+              //console.log(d)
+              measures.push(d);
+            })
+          }
+          //measures.forEach(function(d){console.log(d)})
+
+          for (var k=0; k<graphNodes.length; k++) {
+       			var n = graphNodes[k];
+       			if (n.measures) {
+       				var nodeMeasures = n.measures;
+       				for(var i=0; i < nodeMeasures.length; i++) {
+       					var measureInstance = nodeMeasures[i];
+                console.log('Measure for Node ' + n.id + ': ' + measureInstance.id);
+                if (!measureInstanceMap.has(measureInstance.id)) {
+                  //console.log('Measure ' + measureInstance.id + ' is new');
+                  var measureData = measures.find(x => x.id === measureInstance.type);
+                  measureInstanceMap.set(measureInstance.id, measureData);
+                }
+       				}
+       			}
+       		}
+          console.log('MeasureInstances size: ' + measureInstanceMap.size);
+          measureInstanceMap.forEach(function(d){console.log(d)})
+
+          if (data.cut) {
+            var length = data.cut.nodes.length;
+            for (var i = 0; i < length; i++) {
+              var cNode = data.cut.nodes[i];
+              if (measureInstanceMap.has(cNode.id)) {
+                cutMeasures.push(cNode.id);
+              }
+            }
+          }
+        }
+
+        /* 21-06-2020. Pending.
+        ToDo: build a div above or below the main svg canvas and display information about the solution.
+        */
+        /*
+        svg.append("text")
+          .attr("dx", 35)
+          .attr("dy", 10)
+          .attr("font-size", 20)
+          .text(function (d) { return "Cut nodes, measures, and cost:"; })
+          //.style("stroke","red")
+          .style("fill", function(d) {return "Black";})
+          //.style("text-decoration","underline overline wavy red")
+          //.style("text-decoration", function(d) { return "underline overline dotted red"; });
+          */
         //update(data.graph.edges, data.graph.nodes);
-        //redraw();
         update(graphLinks, graphNodes);
-      	//redraw();
     }
-       
+
 	function getGraphNodeById(id, nodes) {
    		for (var j = 0; j < nodes.length; j++) {
    			var n = nodes[j];
@@ -373,167 +274,249 @@
 
    	function getHullSetPoints(hullSet) {
    		var hullPointsSet = [];
-   			
-   		//for (groupId in hullSet) {	
+
+   		//for (groupId in hullSet) {
    		for (var i=0; i<hullSet.length; i++) {
-   			
+
    			var nodes = hullSet[i].nodes;
-   			//console.log('Nodes.length: ' + nodes.length);	
+   			//console.log('Nodes.length: ' + nodes.length);
    			var points = [];
    			for (var k=0; k<nodes.length; ++k) {
-   				var nodeId = nodes[k];			
+   				var nodeId = nodes[k];
    				var d = getGraphNodeById(nodeId, simulation.nodes());
-   				//console.log('GraphNode ' + d.id + ', x=' + d.x + ', y=' + d.y);	
+   				//console.log('GraphNode ' + d.id + ', x=' + d.x + ', y=' + d.y);
    				if (d) {
    					points.push([d.x,d.y,d.id]);
    				}
    			}
    			hullPointsSet.push({group: hullSet[i].group, points:points}); //d3 v5
    			//hullPointsSet[hullSet[i].group] = points; //d3 v5
-   		}		
-   		
+   		}
    		return hullPointsSet;
    	}
-   	
+
    	function getConvexHullsByMeasure(nodes) {
-   		var hulls = {};		
-   		
+   		var hulls = {};
+
    		for (var k=0; k<nodes.length; ++k) {
    			var n = nodes[k];
-   		    
+
    			if (n.measures) {
    				var measures = n.measures;
    				for(var i=0; i < measures.length; i++) {
    					var m = measures[i];
-   					//var i = getGroupId(n),
-   					var measureInstanceId = m.id, 
-   			        l = hulls[measureInstanceId] || (hulls[measureInstanceId] = []);					
-   					//console.log('Measure for Node ' + n.id + ': ' + measureInstanceId);									
-   				    l.push(n.id);								    
-   				}							
-   			}	    
+   					var measureInstanceId = m.id,
+   			        l = hulls[measureInstanceId] || (hulls[measureInstanceId] = []);
+   					//console.log('Measure for Node ' + n.id + ': ' + measureInstanceId);
+   				    l.push(n.id);
+   				}
+   			}
    		}
 
    		var hullset = [];
-   		for (i in hulls) {			
-   				hullset.push({group: i, nodes:hulls[i]}); //d3 v5			    
+   		for (i in hulls) {
+   				hullset.push({group: i, nodes:hulls[i]}); //d3 v5
    		}
    		return hullset;
    	}
 
    	function getHulls () {
-   		var hullSetPoints = getHullSetPoints(hullSet); 
-   	   	//console.log("RenderHulls");
-   	   	
-   	   	var hulls = [];
-   	   	for (var i=0; i<hullSetPoints.length; i++) {
-    		   //console.log("hullSetPoints[" + i + "]: " + hullSetPoints[i].points);
-    		   var points = hullSetPoints[i].points;
-    			var convexHull = (points.length < 3) ? points : d3.polygonHull(points);
- 		    	//hulls.push(convexHull);  		    	      			
-    			hulls.push({hullId: hullSetPoints[i].group, hullPoints:convexHull});
-    	   }
-   	   	return hulls;
+   		var hullSetPoints = getHullSetPoints(hullSet);
+ 	   	var hulls = [];
+ 	   	for (var i=0; i<hullSetPoints.length; i++) {
+  		   //console.log("hullSetPoints[" + i + "]: " + hullSetPoints[i].points);
+  		   var points = hullSetPoints[i].points;
+  			var convexHull = (points.length < 3) ? points : d3.polygonHull(points);
+		    	//hulls.push(convexHull);
+  			hulls.push({hullId: hullSetPoints[i].group, hullPoints:convexHull});
+  	   }
+ 	   	return hulls;
    	}
-   	
-    function renderHulls() {    	   
-   	   
-        var hulls = getHulls();
-   	   	if (hulls && hulls.length > 0) {
-   	   //convexHullPath.attr ('d', smoothHull(convexHull));
-   	 		hullg.selectAll("path.hull").remove(); 		
-   	 		//console.log("hulls1");
-   		  	hull = hullg.selectAll("path.hull")
-   		      .data(hulls) //.data(getConvexHulls(this.nodes, offset))
-   			    .enter().append("path")
-   			    	.attr("class", "hull")		    	
-   			    	//.attr ('fill', '#F00')
-   			    	//.attr ('stroke-width', '16px')
-   			    	.attr("d", smoothHullX)
-   			      	//.style("fill", function(d) { return fill(d.hullId); })
-   			      	//.style("fill", function(d) { return fill(d3.randomUniform (0, 100)); })		
-   			      	.style("fill", function (d, i) {
-   			      		//console.log("hId: " + d.hullId);		      	
-   	            		return fill(d.hullId);            		
-   	            	}
-   	            	)
-   			      	//.style("fill", "#F00")
-   			      	//.style("fill", "none")
-   			      	.style({'stroke': function(d) { console.log("hId: " + d.hullId); return fill(d.hullId); }, 
-   			        	'stroke-opacity':0.1,    
-   			      		'stroke-width': function(d) { return '28px';	}
-   			      		})
-   			      /*
-   			      .exit().append("text")
-   				    //.attr("dx", 10)
-   				     //.attr("dy", 10)
-   			            .attr("font-size", 100)
-   			            //.text(function (d) {return d.name+":"+d.label;});
-   			            .text(function (d) {
-   			            	var value = "";
-   			                if (d.hullId != "none") {
-   			                	value = "(" + d.hullId + ")";
-   			                }
-   			            	//return d.id + ":" + d.type + value;
-   			                return d.hullId + " " + value;
-   			            });
-   			      */
-   			   
-   			     //hull.append("title")
-   	            //	.text(function (d) {return d.hullId + " (" + d.type + ")";});
-   			      	//.on("click", function(d) { console.log("hull click", d); })		      	
-   			      ;	        	
-   		  
-   			      	/*
-   		      svg.selectAll("hull").remove();		      	
-   		      hull = hullg.selectAll("hull")
-   		      .data(hulls) //.data(getConvexHulls(this.nodes, offset))
-   		  	  .enter().append("text")	  
-   			    .attr("dx", 10)
-   			     .attr("dy", 10)
-   		            .attr("font-size", 100)
-   		            //.text(function (d) {return d.name+":"+d.label;});
-   		            .text(function (d) {
-   		            	var value = "";
-   		                if (d.hullId != "none") {
-   		                	value = "(" + d.hullId + ")";
-   		                }
-   		            	//return d.id + ":" + d.type + value;
-   		                return d.hullId + " " + value;
-   		            });
-   		            */
-   		            
-   			      	/*
-   			hullg.selectAll("text").remove();		      	
-   	      hull = hullg.selectAll("hull")
-   	      .data(hulls) //.data(getConvexHulls(this.nodes, offset))
-   		    .enter().append("text")
-   		    //.attr("dx", 10)
-   		     //.attr("dy", 10)
-   	            .attr("font-size", 100)
-   	            //.text(function (d) {return d.name+":"+d.label;});
-   	            .text(function (d) {
-   	            	var value = "";
-   	                if (d.hullId != "none") {
-   	                	value = "(" + d.hullId + ")";
-   	                }
-   	            	//return d.id + ":" + d.type + value;
-   	                return d.hullId + " " + value;
-   	            });
-   	            
-   	            hull.append("title")
-   	            .text(function (d) {return d.id + " (" + d.hullId + ")";});
-   			*/
-   		  	//.attr ('fill', '#aca')
-   		    //.attr ('stroke', '#888')
-   		    //.attr ('stroke-width', '6px');
-   		  	//console.log("hulls2");
+
+    function renderHulls() {
+      //console.log("Rendering hulls (inside function)");
+      var hulls = getHulls();
+   	  if (hulls && hulls.length > 0) {
+   	 		hullg.selectAll("path.hull").remove();
+      	hull = hullg.selectAll("path.hull")
+ 		      .data(hulls)
+ 			    .enter().append("path")
+ 			    	.attr("class", "hull")
+ 			    	.attr("d", smoothHullX)
+ 			      	//.style("fill", function(d) { return fill(d.hullId); })
+ 			      	//.style("fill", function(d) { return fill(d3.randomUniform (0, 100)); })
+ 			      	.style("fill", function (d, i) {
+ 			      		//console.log("hId: " + d.hullId);
+ 	            		return fill(d.hullId);
+                  //return fill("Martin");
+ 	            	}
+ 	            	)
+ 			      	//.style("fill", "#F00")
+ 			      	.style({'stroke': function(d) {
+                console.log("hId: " + d.hullId);
+                return fill(d.hullId);
+              },
+ 			        	'stroke-opacity':0.1,
+ 			      		'stroke-width': function(d) { return '28px';	}
+              });
+
+        let centroids = new Map();
+        let centroidList = [];
+        hullg.selectAll("text").remove();
+          hull = hullg.selectAll("hull")
+          .data(hulls) //.data(getConvexHulls(this.nodes, offset))
+          .enter()
+          .append("text")
+            .attr("dx", 35)
+            .attr("dy", 10)
+            .attr("font-size", 20)
+            .text(function (d) {
+              var hullTextLabel = d.hullId;
+              var value = measureInstanceMap.get(d.hullId).cost;
+              if (value && value != "none") {
+                hullTextLabel = d.hullId + " (" + value + ")";
+              }
+              //return d.id + ":" + d.type + value;
+              return hullTextLabel;
+            })
+            //.style("stroke","red")
+            .style("fill", function(d) {
+              let index = cutMeasures.indexOf(d.hullId);
+              if (index != -1) {
+            		return "red";
+            	} else {
+            		return "black" }
+            	})
+            //.style("text-decoration","underline overline wavy red")
+            .style("text-decoration", function(d) {
+              let index = cutMeasures.indexOf(d.hullId);
+              if (index != -1) {
+            		return "underline dotted red";
+            	} else {
+            		return "" }
+            	})
+            .attr("transform", function (d, i) {
+              var hp = hulls.find(x => x.hullId === d.hullId).hullPoints;
+              if (hp && hp.length > 0) {
+                var x = hp[0][0];
+                var y = hp[0][1];
+
+                if (hp.length == 2) {
+                  var x1 = hp[1][0];
+                  var y1 = hp[1][1];
+                  //x = x + Math.abs(x1 - x) / 2;
+                  x = (x < x1)?(x + Math.abs(x1 - x) / 2):(x1 + Math.abs(x - x1) / 2);
+                  //y = y + Math.abs(y1 - y) / 2;
+                  y = (y < y1)?(y + Math.abs(y1 - y) / 2):(y1 + Math.abs(y - y1) / 2);
+                  //console.log([x,y]);
+                }
+
+                if (hp.length >= 3) {
+                  var x = hp[0][0];
+                  var y = hp[0][1];
+                  //console.log("Hull center: " + x + ", " + y);
+                  //console.log("Hull points by id: " + hp);
+                  var points = [];
+                  for (var i=0; i<hp.length; i++) {
+                    var p = hp[i];
+                    //console.log("=> Hull point: " + p[0] + ", " + p[1] + " for node " + p[2]);
+                    points.push([p[0],p[1]]);
+                 }
+                 var centroid = d3.polygonCentroid(points);
+                 //console.log("Centroid: " + centroid);
+                  x = centroid[0];
+                  y = centroid[1];
+                }
+
+                //avoid centroids overlapping
+                //Look overlapping forward. Once found, look the last one (internal for) and put at the end (y + distance)
+                //console.log("Centroid length: " + centroids.size);
+                let minDistance = 20;
+                //console.log("centroidList length: " + centroidList.length);
+                for(var i=0; i < centroidList.length; i++) {
+                  var c = centroidList[i];
+                  //console.log("Current centroid: " + c);
+                  if (Math.abs(c[0] - x) < minDistance && Math.abs(c[1] - y) < minDistance) {
+                    //console.log("Current centroid: " + [x,y] + " overlaps with centroid: " + c);
+                    for(var j = centroidList.length-1; j >=0; j--) {
+                      var c2 = centroidList[j];
+                      if (Math.abs(c2[0] - x) < minDistance) {
+                        y = c2[1] + minDistance;
+                        break;
+                      }
+                    }
+                    break;
+                  }
+                }
+                centroids.set(d.hullId, [x,y]);
+                centroidList.push([x,y])
+                return "translate(" + x + "," + y +")"
+              } else {
+                return "translate(0,0)";
+              }
+            }).raise();
+
+            /* 21/06/2020. The following adds rectangles around the critical measures.
+               It works but the underline and overline methods are more efficient with strings of different lengths.
+            */
+            /*
+            hullg.selectAll("rect").remove();
+            hull = hullg.selectAll("hull")
+            .data(hulls) //.data(getConvexHulls(this.nodes, offset))
+            .enter()
+            .append("rect") // failed nodes
+                .attr("x", function(d) {
+                  //console.log("Hull id: " + d.hullId);
+                  let index = cutMeasures.indexOf(d.hullId);
+                  if (index != -1) {
+                    centroid = centroids.get(d.hullId);
+                    //console.log("Centroid: " + centroid);
+                    return centroid[0]+25;
+                  } else {
+                     return 0;
+                   }
+                })
+                .attr("y", function(d) {
+                  //console.log("Hull id: " + d.hullId);
+                  let index = cutMeasures.indexOf(d.hullId);
+                  if (index != -1) {
+                    centroid = centroids.get(d.hullId);
+                    //console.log("Centroid: " + centroid);
+                    return centroid[1]-8;
+                  } else {
+                     return 0;
+                   }
+                })
+                .attr("width", function(d) {
+                  //console.log("Hull id: " + d.hullId);
+                  let index = cutMeasures.indexOf(d.hullId);
+                  if (index != -1) {
+                    return 60;
+                  } else {
+                     return 0;
+                   }
+                })
+                .attr("height", function(d) {
+                  //console.log("Hull id: " + d.hullId);
+                  let index = cutMeasures.indexOf(d.hullId);
+                  if (index != -1) {
+                    return 20;
+                  } else {
+                     return 0;
+                   }
+                })
+                .style("stroke", "red")
+                .style("stroke-width", 2)
+                .style("stroke-dasharray", ("10,3"))
+                .style("opacity", .8)      // set the element opacity
+                .style("fill", "none")   // set the fill colour
+              ;
+              */
    	   	}
-   	   	
    	}
-    
+
     var smoothHullX = function ({hullId, hullPoints}) {
-   		//console.log("hId: " + hullId);    
+   		//console.log("hId: " + hullId);
       	return smoothHull(hullPoints);
     }
 
@@ -544,22 +527,21 @@
 
     	svg.selectAll(".node").remove();
     	svg.selectAll(".link").remove();
-
+      //var hulls = getHulls();
+      //if (hulls && hulls.length > 0) {
 	    update(graphLinks, graphNodes);
-	    
+      //update(graphLinks, graphNodes, hulls);
+
 	    //console.log('Convex hulls: ' + getConvexHulls(force.nodes(), offset)[0]);
     	if (measuresAvailable) {
-    		renderHulls();	
+    		renderHulls();
     	}
 
     }
 
-    
-    
-    function update(links, nodes) {    	  
-    	//graphNodes = nodes;
-    	//graphLinks = links;    	    
 
+    //function update(links, nodes, myHulls) {
+    function update(links, nodes, hulls) {
         link = svg.selectAll(".link")
             .data(links)
             .enter()
@@ -671,11 +653,17 @@
             .text(function (d) {
             	var value = "";
                 if (d.value != "none") {
-                	//value = "(" + d.value + ")";
-                	value = "(" + d.label + ")";
+                  if (d.value == "inf") {
+                    value = " (-)";
+                  } else {
+                    if (d.value != 0) {
+                	     //value = " (" + d.label + ")";
+                       value = " (" + d.value + ")";
+                     }
+                   }
                 }
             	//return d.id + ":" + d.type + value;
-                return d.id + " " + value;
+                return d.id + value;
             });
 
         node.append('svg:image')
@@ -685,7 +673,7 @@
                       //console.log("ICON: " + d.icon);
                       return d.icon;
                     }
-            	  
+
             	if (d.type) {
           		  if (d.type=="and") {
           			return "images/and.png";
@@ -706,8 +694,7 @@
 		  //.attr("height", function(d) { if (d.type && (d.type=="and" || d.type=="or")) { return 50; } else { return 0; } })
       .attr("height", function(d) { if ((d.type && (d.type=="and" || d.type=="or")) || (d.icon)) { return 40; } else { return 0; } })
 		  ;
-		  
-                             
+
         /*
         myHulls = svg.selectAll("path.hull")
         .data(getHulls())
@@ -716,19 +703,21 @@
         .attr("class", "hull")
         .on("click", function (d) {console.log("Hull clicked")});
         */
-        
+
         simulation
     	.nodes(graphNodes)
     	.on("tick", ticked);
 
 	    simulation.force("link")
 	        .links(graphLinks);
-	   
+
     }
 
     function ticked() {
-    	if (measuresAvailable) {   
+    	if (measuresAvailable) {
+        console.log("Rendering hulls (ticked)");
     		renderHulls();
+        //hullg.selectAll("text").attr("transform", function (d) {return "translate(" + d.x + ", " + d.y + ")";});
     	}
     	link
             .attr("x1", function (d) {return d.source.x;})
@@ -834,8 +823,9 @@
 		//highlightMultipleNodesOnGraphById([d.id], _selectedNodeColor, 0.2, 0.4, null, true);
 		//if (d3.event.ctrlKey) { //not working very well (on Mac at least)
 		if (d3.event.altKey) {
-			//console.log('alt clicked');
-	    } else {
+      console.log('alt clicked - remove node ONLY');
+      deleteNodeOnly(d);
+	  } else {
 	    	var linkedNodesIds = [];
 	    	if (d3.event.shiftKey) {
 	    		//console.log('shift clicked');
@@ -845,13 +835,33 @@
 	    	}
 	    }
 	}
-		
-		
-	
-		
-		
-		
-		
+
+  function deleteNodeOnly(d) {
+
+    var index = graphNodes.indexOf(d);
+    console.log("(Node to delete (only): " + d.id + ", index=" + index);
+
+    if (index == -1) {
+      return;
+    }
+    graphNodes.splice(index, 1);
+        spliceLinksForNodeOnly(d);
+        redraw();
+  }
+
+  function spliceLinksForNodeOnly(d) {
+    toSplice = graphLinks.filter(
+            function(l) {
+              return (l.source === d) || (l.target === d);
+            });
+    toSplice.map( function(l) {
+              graphLinks.splice(graphLinks.indexOf(l), 1);
+             });
+  }
+
+
+
+
 	var pointRadius = 20;
 	var hullPadding = 30;
 
@@ -957,83 +967,14 @@
 	        + ' S ' + [          control3, extension0].join(',')
 	        + ' Z';
 	};
-	
-	
-	
-	
-	
-	
-	
-		
-	// Convex HULLS //
-	
-	
-	//var line = d3.line().curve(d3.curveCardinal.tension(0.5));
-    //var curve = d3.line()
-    //.curve(d3.curveLinear) //D3 v4
-	//.interpolate("cardinal-closed") //D3 v3
-	//.tension(.85);
 
-    /*
-    var drawCluster = function(d) {
-    return "M" + 
-      //d3.geom.hull(d.values.map(function(i) { return [i.x, i.y]; }))
-      d3.polygonHull(d.values.map(function(i) { return [i.x, i.y]; }))
-        .join("L")
-    + "Z";
-	};
-	*/
-	function drawCluster(d) {	
+
+	function drawCluster(d) {
 		//.attr("d", function(d) { return "M" + d.join("L") + "Z"; })
-		//return "M" + d.join("L") + "Z"; 
+		//return "M" + d.join("L") + "Z";
 	  return curve(d.path); // 0.8
 	}
-	
 
-	function getGroupId(n) {	
-		var naggenNode = getNaggenNode(n.id);
-		//console.log('Getting group for naggen node ' + naggenNode.id + ', group=' + naggenNode.attributes.group + ', level=' + naggenNode.attributes.level);
-		 if (naggenNode.attributes && naggenNode.attributes.group) {
-			 //console.log('naggenNode ' + n.id + ' at level ' + n.attributes.level);
-			 return n.attributes.group;
-			 //return n.id;
-		 } else {
-			 //console.log('naggenNode ' + n.id + ' with no level => returning 0');
-			 return 0;
-		 }
-	}
-
-
-	
-
-
-	function getConvexHullsByGroup(nodes, offset) {
-	  var hulls = {};
-
-	  // create point sets
-	  for (var k=0; k<nodes.length; ++k) {
-	    var n = nodes[k];
-	    //if (n.size) continue;
-	    var i = getGroupId(n),
-	        l = hulls[i] || (hulls[i] = []);
-	    
-	    //console.log('Node ' + n.id + ', x=' + n.x + ', y=' + n.y);
-	    l.push([n.x-offset, n.y-offset]);
-	    l.push([n.x-offset, n.y+offset]);
-	    l.push([n.x+offset, n.y-offset]);
-	    l.push([n.x+offset, n.y+offset]);
-	  }
-
-	  // create convex hulls
-	  var hullset = [];
-	  for (i in hulls) {
-	    hullset.push({group: i, path: d3.geom.hull(hulls[i])});
-	    //console.log('hullset[' + i + '].path: ' + hullset[i].path);
-	  }
-	  
-	  
-	  return hullset;
-	}
 </script>
 
 </body>
